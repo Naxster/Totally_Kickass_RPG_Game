@@ -1,16 +1,36 @@
+import java.util.Scanner;
+
 public class Mage extends Player {
 
 public Mage()
 	{
-	hp = 100;
+	int s;
+	int d;
+	int m;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Type strenght(dmg,hp), dexterity(def,crit), and magic(mdmg,mp)");
+	System.out.println("You have 10 points");
+	do{
+	s = sc.nextInt();
+	d = sc.nextInt();
+	m = sc.nextInt();}
+	while((s+d+m)!=10);
+	
+	strenght = s; //dmg = 5*3; hp = 5*40;
+	dexterity = d;	//def = 3*3; crt = 3*3
+	magic_skill = m; //mdmg = 2*3; mp = 2*30
+	
+	hp = 40*strenght;
 	ex_hp = 0;
-	mana = 150;	
+	mana = 30*magic_skill;
 	ex_mana = 0;
-	dmg = 5;	
+	dmg = 3*strenght;		
 	ex_dmg = 0;
-	def = 3;	
+	mdmg = 3*magic_skill;		
+	ex_mdmg = 0;
+	def = 3*dexterity;	
 	ex_def = 0;
-	crit = 3;	
+	crit = 3*dexterity;	
 	ex_crit = 0;
 	h_pot = 4;	
 	m_pot = 4;	
@@ -18,7 +38,6 @@ public Mage()
 	exp = 0;	
 	lvl = 1;	
 	weapon = null;	
-	shield = null;	
 	amulet = new Amulet(0);	//przy konstruktorze dla itemu dal "0" da bazowy predefiniowany startowy zestaw
 	spell_book = new Book(2); 
 	equip = new Equipment(this);
@@ -29,18 +48,15 @@ public Mage()
 	}
 public int slash()
 	{
-	/*
-	int res = (int)(Math.random()*(this.weapon.atc_u - this.weapon.atc_l + 1));
+	int res = this.weapon.atc();
 	res += this.getDMG();
-	res += this.weapon.atc_ex();
 	return res;
-	*/
 	}
 public int hide()
-     {
-	 /*
-	 int res = (int)(Math.random()*(this.shield.def_u - this.shield.def_l + 1)) + this.getDEF();
-     return res;
-	 */
-     }
+    {
+	int res = this.getDEF();
+    return res;
+    }
+public void levelup(){
+	}
 }

@@ -1,29 +1,34 @@
 public abstract class Player implements Character {
 
-protected int hp; 	//¿ycie
+protected int strenght; 	//sila (dmg + hp)
+protected int dexterity;	//zrecznosc (def + crit)
+protected int magic_skill;		//umiejetnosci magiczne (mdmg + mp)
+
+protected int hp; 	//zycie
 protected int ex_hp;
 protected int mana;		//mana
 protected int ex_mana;
-protected int dmg;		//obra¿enia podstawowe
+protected int dmg;		//obrazenia podstawowe
 protected int ex_dmg;
+protected int mdmg;		//obrazenia magiczne
+protected int ex_mdmg;
 protected int def;		//obrona podstawowa
 protected int ex_def;
-protected int crit;		//szana na krytyczne
+protected int crit;		//szansa na krytyczne
 protected int ex_crit;
-protected int h_pot;		//mikstury ¿ycia
+protected int h_pot;		//mikstury zycia
 protected int m_pot;		//mikstury many
-protected int gold;		//z³oto
-protected int exp;		//doœwiadczenie
+protected int gold;		//zloto
+protected int exp;		//doswiadczenie
 protected int lvl;		//poziom
-protected Weapon weapon;	//slot na broñ
-protected Shield shield;	//slot na tarcze
+protected Weapon weapon;	//slot na bron
 protected Amulet amulet;	//slot na amulet
 protected Book spell_book;	//ksiega zaklec
 protected Equipment equip;	//ekwipunek
 
 public int x;			//pozycja x i y
 public int y;
-public int exp_nxt;		//doœwiadczenie do nastepnego poziomu
+protected int exp_nxt;		//doswiadczenie do nastepnego poziomu
 
 
 
@@ -60,7 +65,7 @@ public void chgHP(int z)
 */
 public void chgMAN(int z)
      {
-     this.ex_man+=z;
+     this.ex_mana+=z;
      }
 /**
 * funkcja uzywania potionow zycia
@@ -104,7 +109,22 @@ public int getMPOT()
     {
     return this.m_pot;
     }
-	
+/**
+* funkcja podajaca ilosc gotowki
+* do: wyswietlania w glownym oknie
+*/	
+public int getGOLD()
+    {
+    return this.gold;
+    }
+/**
+* funkcja zmieniajaca gotowke
+* do: zmiany po walce, w sklepie
+*/	
+public void chgGOLD(int z)
+    {
+     this.gold += z;
+    }
 	
 //FUNKCJE PODAWANIA W WALCE
 /**
@@ -137,7 +157,7 @@ public int getDEF()
 * do: zmiany wartosci od przedmiotu
 * @param z - warotsc zmiany
 */
-public int chgDEF(int z)
+public void chgDEF(int z)
 	{
 	this.ex_def+=z;
 	}
@@ -154,9 +174,26 @@ public int getDMG()
 * do: zmiany wartosci od przedmiotu
 * @param z - warotsc zmiany
 */
-public int chgDMG(int z)
+public void chgDMG(int z)
 	{
 	this.ex_dmg+=z;
+	}
+/**
+* funkcja podajaca obrazenia magiczne
+* do: obliczen zaklec
+*/
+public int getMDMG()
+    {
+    return (this.mdmg + this.ex_mdmg);
+    }
+/**
+* funkcja zmieniajaca atak magiczny
+* do: zmiany wartosci od przedmiotu
+* @param z - warotsc zmiany
+*/
+public void chgMDMG(int z)
+	{
+	this.ex_mdmg+=z;
 	}
 	
 	
@@ -180,34 +217,48 @@ public int getEXP()
      }
 /**
 * funkcja dodajaca doswiadczenie
-* do: zmiany wartosci po walce
+* do: zmiany wartosci po walce, obsluga inicjacji zmiany poziomu
 * @param z - warotsc zmiany
 */
 public void addEXP(int z)
      {
-     this.exp+=z;
+     this.exp += z;
+	 if(this.exp>=this.exp_nxt)
+		{
+		this.exp -= this.exp_nxt;
+		this.chgEXPNXT();
+		this.levelup();
+		this.lvl++;
+		}
      }
-	 
-	 
-	 
-/*	 
-void addOBR()
-     {
-     obr+=5;
-     cout<<"Sila zwiekszona \n";
-     }
-void addKRT()
-     {
-     kr+=5;
-     cout<<"Szansa na krytyczne zwiekszona \n";
-     }
-void addPAN()
-     {
-     pan+=5;
-     cout<<"Odpornosc zwiekszona \n";
-     }
+public abstract void levelup();
+/**
+* funkcja podajaca dosw. do nastepnego poziomu
+* do: wyswietlania w glownym oknie
 */
-
+public int getEXPNXT()
+     {
+     return this.exp_nxt;
+     }	
+/**
+* funkcja zmieniajaca dosw. do nastepnego poziomu
+* do: dzialan przy zmianie poziomu
+*/
+public void chgEXPNXT()
+     {
+     int tmp;
+	 if(this.lvl < 6)
+		{
+		tmp = (int)(this.exp_nxt * (2 - (0.15*this.lvl-1)));
+		this.exp_nxt = tmp;
+		}
+	else
+		{
+		tmp = (int)(this.exp_nxt * 1.4);
+		this.exp_nxt = tmp;
+		}
+     }
+	 
 
 //FUNKCJE OBLICZENIOWE DO WALKI
 /**
