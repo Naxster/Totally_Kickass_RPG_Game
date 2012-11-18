@@ -1,13 +1,7 @@
-public class Fball implements Spell{
+public class Fball extends Spell{
 
 private int dmg_l;
 private int dmg_u;
-private int cost;
-
-private String name;
-private String formula;
-
-public int lvl;
 
 public Fball(int z){
 	if(z>0)
@@ -26,24 +20,6 @@ public Fball(int z){
 public String data(){
 	String h = (String)(dmg_l + "-" + dmg_u + "; " + cost);
 	return h;
-	}
-/**
-* funkcja podajaca poziom
-*/
-public int level(){
-	return lvl;
-	}
-/**
-* funkcja podajaca nazwe
-*/
-public String name(){
-	return name;
-	}
-/**
-* funkcja podajaca formule
-*/
-public String formula(){
-	return formula;
 	}
 /**
 * funkcja podajaca obrazenia

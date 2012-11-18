@@ -1,12 +1,6 @@
-public class Mshield implements Spell{
+public class Mshield extends Spell{
 
 private int defence;
-private int cost;
-
-private String name;
-private String formula;
-
-public int lvl;
 
 public Mshield(int z){
 	if(z>0)
@@ -24,24 +18,6 @@ public Mshield(int z){
 public String data(){
 	String h = (String)(defence + "; " + cost);
 	return h;
-	}
-/**
-* funkcja podajaca poziom
-*/
-public int level(){
-	return lvl;
-	}
-/**
-* funkcja podajaca nazwe
-*/
-public String name(){
-	return name;
-	}
-/**
-* funkcja podajaca formule
-*/
-public String formula(){
-	return formula;
 	}
 /**
 * funkcja podajaca wzmocnienie obrony

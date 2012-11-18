@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Warrior extends Player {
 
-protected Shield shield;
-
 public Warrior()
 	{
 	int s;
@@ -39,11 +37,8 @@ public Warrior()
 	gold = 0;	
 	exp = 0;	
 	lvl = 1;	
-	weapon = new Weapon(0);	//przy konstruktorze dla itemu dal "0" da bazowy predefiniowany startowy zestaw
-	shield = new Shield(0);	
-	amulet = null;	
 	spell_book = new Book(1);
-	equip = new Equipment(this);
+	equip = new Equipment(this,0);
 
 	 x = 10;	
 	 y = 0;

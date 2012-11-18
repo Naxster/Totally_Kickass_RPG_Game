@@ -1,4 +1,4 @@
-public class Weapon{
+public class Weapon extends Thing{
 
 private int atc_l;
 private int atc_u;
@@ -20,5 +20,19 @@ public int atc(){
 	int res = atc_l + (int)(Math.random()*(atc_u - atc_l + 1));
 	res += atc_s;
 	return res;
-}
+	}
+public String addition(){
+	int a = spec.length();
+	if(a > 1)
+		{
+		String res = "(+ " + atc_s + " " + spec + ")";
+		return res;
+		}
+	return " ";
+	}
+public String show(){
+	String sp = addition();
+	String res = name + " " + sp + " \t" + atc_l + "-" + atc_u;
+	return res;
+	}
 }

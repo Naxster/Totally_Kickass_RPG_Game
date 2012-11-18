@@ -1,45 +1,34 @@
 public class Book {
 
-private Spell f_ball;
-private Spell light;
-private Spell fr_bolt;
-private Spell heal;
-private Spell shield;
-private Spell meteor;
+private Spell[] spells;
 
 public Book(int z){
+	spells = new Spell[6];
 	switch(z){
 	case 1:
-		f_ball = new Fball(1);
-        light = new Lightning(0);
-        fr_bolt = new Freeze(0);
-        heal = new Heal(1);
-        shield = new Mshield(0);
-        meteor = new Meteor(0);
+		spells[0] = new Fball(1);
+        spells[1] = new Lightning(0);
+        spells[2] = new Freeze(0);
+        spells[3] = new Heal(1);
+        spells[4] = new Mshield(0);
+        spells[5] = new Meteor(0);
 		break;
 	case 2:
-		f_ball = new Fball(2);
-        light = new Lightning(0);
-        fr_bolt = new Freeze(1);
-        heal = new Heal(2);
-        shield = new Mshield(0);
-        meteor = new Meteor(0);
+		spells[0] = new Fball(2);
+        spells[1] = new Lightning(0);
+        spells[2] = new Freeze(1);
+        spells[3] = new Heal(2);
+        spells[4] = new Mshield(0);
+        spells[5] = new Meteor(0);
 		break;
 	case 0:
-		f_ball = null;
-        light =  null;
-        fr_bolt =  null;
-        heal = null;
-        shield =  null;
-        meteor =  null;
 		break;
 	default:
-		f_ball = new Fball(z);
-        light = new Lightning(z);
-        fr_bolt = new Freeze(z);
-        heal = new Heal(z-1);
-        shield = new Mshield(z+1);
-        meteor = null;
+		spells[0] = new Fball(z);
+        spells[1] = new Lightning(z);
+        spells[2] = new Freeze(z);
+        spells[3] = new Heal(z-1);
+        spells[4] = new Mshield(z+1);
 		break;
 	}
 }
@@ -55,46 +44,21 @@ public void cast(Character z, int n){
 * do: pokazania na rozkaz, przy awansie
 */
 public void show(){
+	Spell z;
 	String name;
 	String formula;
 	String ex;
-	int lev;
+	int lev,i;
 	
-	name = f_ball.name();
-	formula = f_ball.formula();
-	lev = f_ball.level();
-	ex = f_ball.data();
-	System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
-	
-    name = light.name();
-	formula = light.formula();
-	lev = light.level();
-	ex = light.data();
-	System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
-	
-    name = fr_bolt.name();
-	formula = fr_bolt.formula();
-	lev = fr_bolt.level();
-	ex = fr_bolt.data();
-	System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
-	
-    name = heal.name();
-	formula = heal.formula();
-	lev = heal.level();
-	ex = heal.data();
-	System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
-	
-	name = shield.name();
-	formula = shield.formula();
-	lev = shield.level();
-	ex = shield.data();
-	System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
-	
-	name = meteor.name();
-	formula = meteor.formula();
-	lev = meteor.level();
-	ex = meteor.data();
-	System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
+	for(i=0;i<6;i++)
+		{
+		z = spells[i];
+		name = z.name();
+		formula = z.formula();
+		lev = z.level();
+		ex = z.data();
+		System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
+		}
 }
 }
 	

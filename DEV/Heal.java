@@ -1,12 +1,6 @@
-public class Heal implements Spell{
+public class Heal extends Spell{
 
 private int heal;
-private int cost;
-
-private String name;
-private String formula;
-
-public int lvl;
 
 public Heal(int z){
 	if(z>0)
@@ -24,24 +18,6 @@ public Heal(int z){
 public String data(){
 	String h = (String)(heal + "; " + cost);
 	return h;
-	}
-/**
-* funkcja podajaca poziom
-*/
-public int level(){
-	return lvl;
-	}
-/**
-* funkcja podajaca nazwe
-*/
-public String name(){
-	return name;
-	}
-/**
-* funkcja podajaca formule
-*/
-public String formula(){
-	return formula;
 	}
 /**
 * funkcja podajaca leczone hp

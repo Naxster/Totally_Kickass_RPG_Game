@@ -1,15 +1,9 @@
-public class Freeze implements Spell{
+public class Freeze extends Spell{
 
 private int dmg_l;
 private int dmg_u;
 private int def_low;
 private int chance;
-private int cost;
-
-private String name;
-private String formula;
-
-public int lvl;
 
 public Freeze(int z){
 	if(z>0)
@@ -30,24 +24,6 @@ public Freeze(int z){
 public String data(){
 	String h = (String)(dmg_l + "-" + dmg_u + "; lower def: " + def_low + " " + chance +"%; " + cost);
 	return h;
-	}
-/**
-* funkcja podajaca poziom
-*/
-public int level(){
-	return lvl;
-	}
-/**
-* funkcja podajaca nazwe
-*/
-public String name(){
-	return name;
-	}
-/**
-* funkcja podajaca formule
-*/
-public String formula(){
-	return formula;
 	}
 /**
 * funkcja podajaca obrazenia

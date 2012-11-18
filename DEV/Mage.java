@@ -37,10 +37,8 @@ public Mage()
 	gold = 0;	
 	exp = 0;	
 	lvl = 1;	
-	weapon = null;	
-	amulet = new Amulet(0);	//przy konstruktorze dla itemu dal "0" da bazowy predefiniowany startowy zestaw
 	spell_book = new Book(2); 
-	equip = new Equipment(this);
+	equip = new Equipment(this,1);
 
 	 x = 10;	
 	 y = 0;
