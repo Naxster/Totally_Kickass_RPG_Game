@@ -26,6 +26,7 @@ public Amulet amulet;	//slot na amulet
 public Shield shield;
 protected Book spell_book;	//ksiega zaklec
 protected Equipment equip;	//ekwipunek
+protected Name names; //katalog nazw
 
 public int x;			//pozycja x i y
 public int y;
@@ -272,4 +273,52 @@ public abstract int slash();
 * do: walki
 */
 public abstract int hide();
+
+public void identify(){
+	int data;
+	
+	data = strenght;
+	System.out.println("Strenght: \t\t" + data);
+	data = dexterity;
+	System.out.println("Dexterity: \t\t" + data);
+ 	data = magic_skill;
+	System.out.println("Magic: \t\t\t" + data);
+	data = hp;
+	System.out.println("Health: \t\t" + data);
+	data = mana;
+	System.out.println("Mana: \t\t\t" + data);
+	data = dmg;
+	System.out.println("Damage: \t\t" + data);
+	data = mdmg;
+	System.out.println("Magical damage: \t" + data);
+	data = def;
+	System.out.println("Defence: \t\t" + data);
+	data = crit;
+	System.out.println("Chance for critical: \t" + data);
+	System.out.println("ADDITIONAL:");
+	data = ex_hp;
+	System.out.println("Add Health: \t\t" + data);
+	data = ex_mana;
+	System.out.println("Add Mana: \t\t" + data);
+	data = ex_dmg;
+	System.out.println("Add Damage: \t\t" + data);
+	data = ex_mdmg;
+	System.out.println("Add Magical damage: \t" + data);
+	data = ex_def;
+	System.out.println("Add Defence: \t\t" + data);
+	data = ex_crit;
+	System.out.println("Add Chn for critical: \t" + data);
+	}
+public Name getNames(){
+	return names;
+	}
+public int s_strenght(){
+	return strenght;
+	}
+public int s_dexterity(){
+	return dexterity;
+	}
+public int s_magic_skill(){
+	return magic_skill;
+	}
 }

@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Warrior extends Player {
 
-public Warrior()
+public Warrior(Name names) throws IOException
 	{
 	int s;
 	int d;
@@ -38,7 +39,9 @@ public Warrior()
 	exp = 0;	
 	lvl = 1;	
 	spell_book = new Book(1);
+	names = new Name();
 	equip = new Equipment(this,0);
+
 
 	 x = 10;	
 	 y = 0;

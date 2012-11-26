@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Mage extends Player {
 
-public Mage()
+public Mage(Name names) throws IOException
 	{
 	int s;
 	int d;
@@ -23,11 +24,11 @@ public Mage()
 	hp = 40*strenght;
 	ex_hp = 0;
 	mana = 30*magic_skill;
-	ex_mana = 0;
+	ex_mana = 10;
 	dmg = 3*strenght;		
 	ex_dmg = 0;
 	mdmg = 3*magic_skill;		
-	ex_mdmg = 0;
+	ex_mdmg = 2;
 	def = 3*dexterity;	
 	ex_def = 0;
 	crit = 3*dexterity;	
@@ -38,6 +39,7 @@ public Mage()
 	exp = 0;	
 	lvl = 1;	
 	spell_book = new Book(2); 
+	names = new Name();
 	equip = new Equipment(this,1);
 
 	 x = 10;	
