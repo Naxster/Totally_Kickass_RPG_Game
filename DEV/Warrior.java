@@ -39,7 +39,7 @@ public Warrior(Name names) throws IOException
 	exp = 0;	
 	lvl = 1;	
 	spell_book = new Book(1);
-	names = new Name();
+	this.names = names;
 	equip = new Equipment(this,0);
 
 
@@ -49,9 +49,22 @@ public Warrior(Name names) throws IOException
 	}
 public int slash()
 	{
-	int res = this.weapon.atc();
-	res += this.getDMG();
-	return res;
+	int res;
+	if(this.weapon.id() == 'w')
+		{
+		Weapon w = (Weapon)(this.weapon);
+		res = w.atc();
+		res += this.getDMG();
+		return res;
+		}
+	else if(this.weapon.id() == 'l')
+		{
+		Staff s = (Staff)(this.weapon);
+		res = s.atc();
+		res += this.getDMG();
+		return res;
+		}
+	return 0;
 	}
 public int hide()
     {

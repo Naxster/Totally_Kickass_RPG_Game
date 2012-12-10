@@ -16,7 +16,7 @@ public Equipment(Player z, int n){
 		}
 	if(n ==1) //dla Maga
 		{
-		gracz.weapon = null;	//przy konstruktorze dla itemu dal "0" da bazowy predefiniowany startowy zestaw
+		gracz.weapon = new Staff(0,0,gracz.getNames());	//przy konstruktorze dla itemu dal "0" da bazowy predefiniowany startowy zestaw
 		gracz.shield = null;
 		gracz.amulet = new Amulet(0,0,gracz.getNames());
 		}
@@ -80,7 +80,7 @@ public void swap(int num){
 		tmp = gracz.weapon;
 		if(gracz.weapon != null)
 			gracz.weapon.remove_from(gracz);
-		gracz.weapon = (Weapon)(things[num]);
+		gracz.weapon = (things[num]);
 		things[num].add_to(gracz);
 		things[num] = tmp;
 		break;
@@ -107,6 +107,19 @@ public void swap(int num){
 		if(gracz.amulet != null)
 			gracz.amulet.remove_from(gracz);
 		gracz.amulet = (Amulet)(things[num]);
+		things[num].add_to(gracz);
+		things[num] = tmp;
+		break;
+	case 'l':
+		if(gracz.s_magic_skill() < things[num].requirements())
+			{
+			System.out.println("Too low magic skill!");
+			break;
+			}
+		tmp = gracz.weapon;
+		if(gracz.weapon != null)
+			gracz.weapon.remove_from(gracz);
+		gracz.weapon = (things[num]);
 		things[num].add_to(gracz);
 		things[num] = tmp;
 		break;

@@ -8,6 +8,7 @@ public static void main(String[] args) throws IOException,InterruptedException{
 Scanner sc = new Scanner(System.in);
 String useless;
 Name ok = new Name();
+int i;
 
 System.out.println("\n Creating Mage \n");
 Player gram = new Mage(ok);
@@ -15,6 +16,23 @@ gram.identify();
 System.out.println("\n Creating Warrior \n");
 Player gram2 = new Warrior(ok);
 gram2.identify();
+System.out.println("\n Creating Werewolf: \n");
+Monster gram3 = new Werewolf(4,1);
+gram3.identify();
+System.out.println("\n Creating necromancer: \n");
+Monster gram4 = new Necromancer(4,1,ok);
+gram4.identify();
+
+useless = sc.nextLine();
+
+System.out.println("\n Werewolf's items: ");
+Thing[] it = gram3.loot();
+for(i=0;i<it.length;i++)
+System.out.println(it[i].show());
+System.out.println("\n Necromancer's items: ");
+it = gram4.loot();
+for(i=0;i<it.length;i++)
+System.out.println(it[i].show());
 
 useless = sc.nextLine();
 
@@ -34,7 +52,7 @@ useless = sc.nextLine();
 
 System.out.println("\n now Mage will found something and something... \n");
 Thread.currentThread().sleep(1500);
-Amulet something = new Amulet(0,1,ok);
+Staff something = new Staff(1,3,ok);
 gram.equip.found(something);
 Weapon something2 = new Weapon(1,5,ok);
 gram.equip.found(something2);

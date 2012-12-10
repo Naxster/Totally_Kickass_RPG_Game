@@ -21,7 +21,7 @@ protected int m_pot;		//mikstury many
 protected int gold;		//zloto
 protected int exp;		//doswiadczenie
 protected int lvl;		//poziom
-public Weapon weapon;	//slot na bron
+public Thing weapon;	//slot na bron
 public Amulet amulet;	//slot na amulet
 public Shield shield;
 protected Book spell_book;	//ksiega zaklec

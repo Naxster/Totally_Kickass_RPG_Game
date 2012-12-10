@@ -20,6 +20,9 @@ public String[] a2;
 public String[] a3;
 public String[] ae;
 
+public String[] l1;
+public String[] l2;
+
 public Name() throws IOException,FileNotFoundException{
 	int i;
 	System.out.println("Loading weapon names library...\n");
@@ -105,5 +108,18 @@ public Name() throws IOException,FileNotFoundException{
 	
 	for(i=0;i<11;i++)
 	ae[i] = namee.readLine();
+	
+	
+	System.out.println("Loading staff names library...\n");
+	name1 = new BufferedReader(new FileReader("l_1.txt"));
+	l1 = new String[11];
+	name2 = new BufferedReader(new FileReader("l_2.txt"));
+	l2 = new String[17];
+	
+	for(i=0;i<11;i++)
+	l1[i] = name1.readLine();
+	
+	for(i=0;i<17;i++)
+	l2[i] = name2.readLine();
 	}
 }

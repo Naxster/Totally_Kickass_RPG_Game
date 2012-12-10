@@ -90,4 +90,20 @@ public void add_to(Player z){
 	z.chgDEF(ex_def);
 	z.chgCRIT(ex_crit);
 	}
+public void add_to_n(Necromancer z){
+	z.chgHP(ex_hp);
+	z.chgMAN(ex_mana);
+	z.chgDMG(ex_dmg);
+	z.chgMDMG(ex_mdmg);
+	z.chgDEF(ex_def);
+	z.chgCRIT(ex_crit);
+	}
+public void add_to_k(Knurla z){
+	z.chgHP(ex_hp);
+	z.chgMAN(ex_mana);
+	z.chgDMG(ex_dmg);
+	z.chgMDMG(ex_mdmg);
+	z.chgDEF(ex_def);
+	z.chgCRIT(ex_crit);
+	}
 }

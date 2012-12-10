@@ -22,13 +22,13 @@ public Mage(Name names) throws IOException
 	magic_skill = m; //mdmg = 2*3; mp = 2*30
 	
 	hp = 40*strenght;
-	ex_hp = 0;
+	ex_hp = 10;
 	mana = 30*magic_skill;
-	ex_mana = 10;
+	ex_mana = 15;
 	dmg = 3*strenght;		
 	ex_dmg = 0;
 	mdmg = 3*magic_skill;		
-	ex_mdmg = 2;
+	ex_mdmg = 9;
 	def = 3*dexterity;	
 	ex_def = 0;
 	crit = 3*dexterity;	
@@ -39,7 +39,7 @@ public Mage(Name names) throws IOException
 	exp = 0;	
 	lvl = 1;	
 	spell_book = new Book(2); 
-	names = new Name();
+	this.names = names;
 	equip = new Equipment(this,1);
 
 	 x = 10;	
@@ -48,9 +48,22 @@ public Mage(Name names) throws IOException
 	}
 public int slash()
 	{
-	int res = this.weapon.atc();
-	res += this.getDMG();
-	return res;
+	int res;
+	if(this.weapon.id() == 'w')
+		{
+		Weapon w = (Weapon)(this.weapon);
+		res = w.atc();
+		res += this.getDMG();
+		return res;
+		}
+	else if(this.weapon.id() == 'l')
+		{
+		Staff s = (Staff)(this.weapon);
+		res = s.atc();
+		res += this.getDMG();
+		return res;
+		}
+	return 0;
 	}
 public int hide()
     {
