@@ -6,8 +6,8 @@ private int dmg_u;
 public Fball(int z){
 	if(z>0)
 		{
-		dmg_l = 28 + ((z-1)*3);
-		dmg_u = 32 + ((z-1)*4);
+		dmg_l = 48 + ((z-1)*3);
+		dmg_u = 52 + ((z-1)*4);
 		cost = 20 + ((z-1)*5);
 		}
 	lvl = z;
@@ -34,5 +34,7 @@ public int dmg(){
 */
 public void use(Character z){
 	int tmp = dmg();
+	z.hide(tmp);
+	z.drain(this.cost());
 	}
 }

@@ -85,12 +85,12 @@ public int getLVL()
 * funkcja wyliczajaca watosc ataku (ABSTAKCJA)
 * do: walki
 */
-public abstract int slash();
+public abstract void slash(Player p);
 /**
 * funkcja wyliczajaca watosc aobrony
 * do: walki
 */
-public abstract int hide();
+public abstract void hide(int n);
 
 public void identify(){
 	int data;
@@ -116,5 +116,22 @@ public void identify(){
 	}
 public Thing[] loot(){
 	return items;
+	}
+public boolean isDead(){
+	if(this.hp<=0)
+		return true;
+	else 
+		return false;
+	}
+public void drain(int n){
+	this.mana -= n;
+	}
+public void spoilDEF(int z){
+	this.def -= z;
+	if(this.def<0)
+		this.def = 0;
+	}
+public void help(int n){
+	this.hp += n;
 	}
 }

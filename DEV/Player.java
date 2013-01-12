@@ -32,6 +32,11 @@ public int x;			//pozycja x i y
 public int y;
 protected int exp_nxt;		//doswiadczenie do nastepnego poziomu
 
+public int meta_hp;
+public int meta_mana;
+protected int meta_dmg;
+protected int meta_def;
+
 
 
 //FUNKCJE DO WYSWIETLANIA
@@ -49,7 +54,7 @@ public int getHP()
 */
 public int getMANA()
     {
-    return (this.mana + this.ex_mana);
+    return this.meta_mana;
     }
 /**
 * funkcja zmieniajaca zycie
@@ -78,7 +83,10 @@ public void chgMAN(int z)
 public void useHPOT(boolean t, int z)
      {
      if(t==true)
-     this.h_pot-=1;
+		{
+		this.h_pot-=1;
+		this.meta_hp += 150;
+		}
      else
      this.h_pot+=z;
      }  
@@ -99,7 +107,10 @@ public int getHPOT()
 public void useMPOT(boolean t, int z)  //true to uzycie, false to dodanie
      {
      if(t==true)
-     this.m_pot-=1;
+		{
+		this.m_pot-=1;
+		this.meta_mana += 120;
+		}
      else
      this.m_pot+=z;
      } 
@@ -164,6 +175,18 @@ public void chgDEF(int z)
 	this.ex_def+=z;
 	}
 /**
+* funkcja zmieniajaca obrone
+* do: zmiany wartosci od ataku
+* @param z - warotsc zmiany
+*/
+public void spoilDEF(int z)
+	{
+	if(this.def-z > 0)
+		this.def-=z;
+	else
+		this.def = 0;
+	}
+/**
 * funkcja podajaca obrazenia
 * do: obliczen funkcji slash
 */
@@ -179,6 +202,18 @@ public int getDMG()
 public void chgDMG(int z)
 	{
 	this.ex_dmg+=z;
+	}
+/**
+* funkcja zmieniajaca atak
+* do: zmiany wartosci od ataku
+* @param z - warotsc zmiany
+*/
+public void spoilDMG(int z)
+	{
+	if(this.dmg-z > 0)
+		this.dmg-=z;
+	else
+		this.dmg = 0;
 	}
 /**
 * funkcja podajaca obrazenia magiczne
@@ -272,8 +307,24 @@ public abstract int slash();
 * funkcja wyliczajaca watosc aobrony
 * do: walki
 */
-public abstract int hide();
+public abstract void hide(int n);
 
+/**
+* funkcja podajaca zycie
+* do: kopiowania przy walce, wyswietlania w glownym oknie
+*/
+public void stFight()
+    {
+    this.meta_hp = this.hp + this.ex_hp;
+	this.meta_mana = this.mana + this.ex_mana;
+	this.meta_dmg = this.dmg;
+	this.meta_def = this.def;
+    }
+public void endFight()
+	{
+	this.dmg = this.meta_dmg;
+	this.def = this.meta_def;
+	}
 public void identify(){
 	int data;
 	
@@ -320,5 +371,11 @@ public int s_dexterity(){
 	}
 public int s_magic_skill(){
 	return magic_skill;
+	}
+public void drain(int n){
+	this.meta_mana -= n;
+	}
+public void help(int n){
+	this.meta_hp += n;
 	}
 }

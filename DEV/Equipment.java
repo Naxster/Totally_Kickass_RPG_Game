@@ -4,10 +4,19 @@ public class Equipment{
 
 private Thing[] things;
 private Player gracz;
+public int claw;
+public int ebon;
+public int dust;
+public int venom;
 
 public Equipment(Player z, int n){
 	gracz = z;
 	things = new Thing[8];
+	claw = 0;
+	ebon = 0;
+	dust = 0;
+	venom = 0;
+	
 	if(n==0) //Dla Warriora
 		{
 		gracz.weapon = new Weapon(0,0,gracz.getNames());	//przy konstruktorze dla itemu dal "0" da bazowy predefiniowany startowy zestaw
@@ -58,6 +67,8 @@ public void show(){
 		else
 			System.out.println("\t"+(i+1)+". ");
 		}
+	System.out.println("\nClaws:"+claw+" Ebonite:"+ebon+" Dust:"+dust+" Venom:"+venom);
+	System.out.println("Gold: "+gracz.getGOLD());
 	}
 /**
 * funkcja zakladajaca przedmiot z pozycji
@@ -127,6 +138,30 @@ public void swap(int num){
 		break;
 	}
 	}
+public void foundItem(Thing f){
+	if(f.show() == "Claws")
+		{
+		claw += 1;
+		f.add_to(gracz);
+		}
+	else if(f.show() == "Piece of ebonite")
+		{
+		ebon += 1;
+		f.add_to(gracz);
+		}
+	else if(f.show() == "Dust")
+		{
+		dust += 1;
+		f.add_to(gracz);
+		}
+	else if(f.show() == "Venom")
+		{
+		venom += 1;
+		f.add_to(gracz);
+		}
+	else 
+		f.add_to(gracz);
+}
 /**
 * funkcja dodajaca przedmiot do ekwipunku
 */
@@ -138,7 +173,12 @@ public void found(Thing f){
 	
 	System.out.println("Found something! :");
 	String info = f.show();
-	System.out.println("\t"+info);	
+	System.out.println("\t"+info+"\n");	
+	if(f.id() == 'i')
+		{
+		foundItem(f);
+		return;
+		}
 	show();
 	System.out.println("Wanna add? (y/n)");
 	while(dec!='y' && dec!='n')

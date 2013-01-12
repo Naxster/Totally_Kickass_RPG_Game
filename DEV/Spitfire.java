@@ -28,14 +28,44 @@ public Spitfire(int z, int l) throws IOException
 	 x = 0;	
 	 y = 0;
 	}
-public int slash()
+public int krytyk(){
+	int los = (int)(Math.random()*101);
+	if(los<=this.crit)
+		return this.dmg*2;
+	else
+		return this.dmg;
+}
+public void slash(Player p)
 	{
-	int res = this.mdmg;
-	return res;
+	this.mana += 5;
+	if(mana>=30)
+		{
+		int tmp = this.mdmg - p.getDEF();
+		if(tmp<0)
+			tmp = 0;
+		System.out.println("You get "+tmp+" damage \nDEFENCE LOWER & MANA DRAIN");
+		p.meta_hp -= tmp;
+		p.spoilDEF(this.dmg);
+		if(p.meta_mana-10 >=0)
+			p.meta_mana -= 10;
+		else
+			p.meta_mana = 0;
+		this.mana -= 30;
+		}
+	else
+		{
+		int tmp = krytyk() - p.getDEF();
+		if(tmp<0)
+			tmp = 0;
+		System.out.println("You take "+tmp+" damage");
+		p.meta_hp -= tmp;
+		}
 	}
-public int hide()
+public void hide(int n)
     {
-	int res = this.dmg;
-    return res;
+	int obr = n - this.def;
+	if(obr > 0)
+		this.hp -= obr;
+	System.out.println("Enemy take "+obr+" damage");
     }
 }

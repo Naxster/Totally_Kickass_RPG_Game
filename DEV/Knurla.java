@@ -9,12 +9,22 @@ protected int ex_mdmg;
 protected int ex_def;
 protected int ex_crit;
 protected int h_pot;		//mikstury zycia
-protected int gold;		//zloto
+public int gold;		//zloto
 public Weapon weapon;	//slot na bron
 public Shield shield;
 public Amulet amulet;	//slot na amulet
 protected Name names; //katalog nazw
 
+public void useHPOT(boolean t, int z)
+     {
+     if(t==true)
+		{
+		this.h_pot-=1;
+		this.hp += 50;
+		}
+     else
+     this.h_pot+=z;
+     }  
 public void chgHP(int z)
      {
      this.ex_hp+=z;
@@ -39,10 +49,14 @@ public void chgMDMG(int z)
 	{
 	this.ex_mdmg+=z;
 	}
+public int attack(){
+	int res = this.weapon.atc();
+	res += this.dmg;
+	return res;
+	}
 
-public Knurla(int z, int l) throws IOException
+public Knurla(int z, int l, Name names) throws IOException
 	{
-	//Nekromanta
 	strenght = ((z+1) + (l-1)); //dmg = 5*3; hp = 5*40;
 	dexterity = ((z+1) + (l-1));	//def = 3*3; crt = 3*3
 	magic_skill = 0; //mdmg = 2*3; mp = 2*30
@@ -50,15 +64,15 @@ public Knurla(int z, int l) throws IOException
 	lvl = l;
 	this.names = names;
 	
-	weapon = new Weapon(z,l,names);
-	amulet = new Amulet(z,l,names);
-	shield = new Shield(z,l,names);
+	weapon = new Weapon(l,z,names);
+	amulet = new Amulet(l,z,names);
+	shield = new Shield(l,z,names);
 	
 	amulet.add_to_k(this);
 	
 	hp = 40*strenght;
 	mana = 30*magic_skill;
-	dmg = 3*strenght;		
+	dmg = 8*strenght;		
 	mdmg = 3*magic_skill;		
 	def = 3*dexterity;	
 	crit = 3*dexterity;	
@@ -68,20 +82,45 @@ public Knurla(int z, int l) throws IOException
 	items = new Thing[4];
 	items[0] = new Item(5,"Claws");
 	items[1] = new Item(10,"Piece of ebonite");
-	items[2] = new Weapon(2,l,names);
-	items[3] = new Shield(1,l,names);
+	items[2] = new Weapon(l,2,names);
+	items[3] = new Shield(l,1,names);
 	
 	 x = 0;	
 	 y = 0;
 	}
-public int slash()
+public int krytyk(){
+	int los = (int)(Math.random()*101);
+	if(los<=this.crit)
+		return this.attack()*2;
+	else
+		return this.attack();
+}
+public void slash(Player p)
 	{
-	int res = this.dmg;
-	return res;
+	if(hp<60 && h_pot>0)
+		this.useHPOT(true,0);
+	else if(hp>=80)
+		{
+		int tmp = krytyk() - p.getDEF();
+		if(tmp<0)
+			tmp = 0;
+		System.out.println("You take "+tmp+" damage");
+		p.meta_hp -= tmp;
+		}
+	else
+		{
+		int tmp = (int)(this.attack()*1.5 - p.getDEF());
+		if(tmp<0)
+			tmp = 0;
+		System.out.println("You take "+tmp+" damage");
+		p.meta_hp -= tmp;
+		}
 	}
-public int hide()
+public void hide(int n)
     {
-	int res = this.dmg;
-    return res;
+	int obr = n - (this.def + this.ex_def);
+	if(obr > 0)
+		this.hp -= obr;
+	System.out.println("Enemy take "+obr+" damage");
     }
 }

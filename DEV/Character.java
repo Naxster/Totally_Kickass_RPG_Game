@@ -7,7 +7,9 @@ public interface Character{
 	public int getDMG();
 	public int getMDMG();
 	public int getLVL();
-	public int hide();
-	public int slash(); //dla postaci podawanie przeciwnika (jak dla ksiegi), dla potwora wybor dzia³ania jeszcze
+	public void hide(int n);
 	public void identify();
+	public void drain(int n);
+	public void help(int n);
+	public void spoilDEF(int z);
 }

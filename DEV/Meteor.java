@@ -6,8 +6,8 @@ private int dmg_u;
 public Meteor(int z){
 	if(z>0)
 		{
-		dmg_l = 100 + ((z-1)*10);
-		dmg_u = 130 + ((z-1)*15);
+		dmg_l = 200 + ((z-1)*10);
+		dmg_u = 230 + ((z-1)*15);
 		cost = 250 + ((z-1)*30);
 		}
 	lvl = z;
@@ -34,5 +34,7 @@ public int dmg(){
 */
 public void use(Character z){
 	int tmp = dmg();
+	z.hide(tmp);
+	z.drain(this.cost());
 	}
 }

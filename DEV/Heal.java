@@ -31,5 +31,7 @@ public int healing(){
 */
 public void use(Character z){
 	int tmp = healing();
+	z.help(tmp);
+	z.drain(this.cost());
 	}
 }

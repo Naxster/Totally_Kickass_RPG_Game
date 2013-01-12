@@ -6,8 +6,8 @@ private int dmg_u;
 public Lightning(int z){
 	if(z>0)
 		{
-		dmg_l = 1 + ((z-1)*2);
-		dmg_u = 40 + ((z-1)*6);
+		dmg_l = 21 + ((z-1)*2);
+		dmg_u = 60 + ((z-1)*6);
 		cost = 20 + ((z-1)*5);
 		}
 	lvl = z;
@@ -34,5 +34,7 @@ public int dmg(){
 */
 public void use(Character z){
 	int tmp = dmg();
+	z.hide(tmp);
+	z.drain(this.cost());
 	}
 }

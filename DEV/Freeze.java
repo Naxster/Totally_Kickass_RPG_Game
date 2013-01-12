@@ -8,8 +8,8 @@ private int chance;
 public Freeze(int z){
 	if(z>0)
 		{
-		dmg_l = 7 + ((z-1)*3);
-		dmg_u = 20 + ((z-1)*3);
+		dmg_l = 27 + ((z-1)*3);
+		dmg_u = 40 + ((z-1)*3);
 		cost = 20 + ((z-1)*5);
 		def_low = 4 + (z-1);
 		chance = 60 + ((z-1)*2);
@@ -49,5 +49,7 @@ public int lower(){
 public void use(Character z){
 	int tmp = dmg();
 	int tmp2 = lower();
+	z.hide(tmp);
+	z.spoilDEF(tmp2);
 	}
 }

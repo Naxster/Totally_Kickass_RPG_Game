@@ -13,6 +13,9 @@ public String formula(){
 public int level(){
 	return lvl;
 	}
+public int cost(){
+	return cost;
+	}
 public abstract String data();
 public abstract void use(Character z);
 }

@@ -13,5 +13,7 @@ public char id(){
 	return 'i';
 	}
 public void remove_from(Player z){}
-public void add_to(Player z){}
+public void add_to(Player z){
+	z.chgGOLD(this.cost);
+	}
 }
