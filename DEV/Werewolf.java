@@ -15,7 +15,7 @@ public Werewolf(int z, int l) throws IOException
 	mana = 30*magic_skill;	
 	dmg = 10*strenght + lvl*6;	
 	mdmg = 0;		
-	def = 2*dexterity + 2*lvl;	
+	def = dexterity + 2*lvl;	
 	crit = 10*dexterity + 20;	
 		
 	items = new Item[4];
@@ -27,14 +27,39 @@ public Werewolf(int z, int l) throws IOException
 	 x = 0;	
 	 y = 0;
 	}
-public int slash()
+public int krytyk(){
+	int los = (int)(Math.random()*101);
+	if(los<=this.crit)
+		return this.dmg*2;
+	else
+		return this.dmg;
+}
+public void slash(Player p)
 	{
-	int res = this.dmg;
-	return res;
+	this.mana += 5;
+	if(mana>=30)
+		{
+		int tmp = krytyk() - p.getDEF();
+		if(tmp<0)
+			tmp = 0;
+		System.out.println("You take "+tmp+" damage");
+		p.meta_hp -= tmp;
+		this.mana -= 30;
+		}
+	else
+		{
+		int tmp = this.dmg - p.getDEF();
+		if(tmp<0)
+			tmp = 0;
+		System.out.println("You take "+tmp+" damage");
+		p.meta_hp -= tmp;
+		}
 	}
-public int hide()
+public void hide(int n)
     {
-	int res = this.dmg;
-    return res;
+	int obr = n - this.def;
+	if(obr > 0)
+		this.hp -= obr;
+	System.out.println("Enemy take "+obr+" damage");
     }
 }

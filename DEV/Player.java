@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.io.*;
+
 public abstract class Player implements Character {
 
 protected int strenght; 	//sila (dmg + hp)
@@ -260,7 +263,7 @@ public int getEXP()
 public void addEXP(int z)
      {
      this.exp += z;
-	 if(this.exp>=this.exp_nxt)
+	 while(this.exp>=this.exp_nxt)
 		{
 		this.exp -= this.exp_nxt;
 		this.chgEXPNXT();
@@ -268,9 +271,37 @@ public void addEXP(int z)
 		this.lvl++;
 		}
      }
-public abstract void levelup();
-/**
-* funkcja podajaca dosw. do nastepnego poziomu
+public void levelup(){
+	Scanner sc = new Scanner(System.in);
+	String chos;
+	System.out.println("LEVEL UP! Choose option to modify: \n[s]trenght\n[d]exterity\n[m]agic skill\n[l]earn or improve spell");
+	chos = sc.nextLine();
+
+	switch(chos){
+	case "s":
+		this.strenght += 1;
+		this.hp += 40;
+		this.dmg += 8;
+		break;
+	case "d":
+		this.dexterity += 1;
+		this.crit += 3;
+		this.def += 6;
+		break;
+	case "m":
+		this.magic_skill += 1;
+		this.mana += 30;
+		this.mdmg += 7;
+		break;
+	case "l":
+		this.spell_book.update();
+		break;
+	default:
+		System.out.println("Blad");
+	}
+	}
+/**	
+* funkcja podajaca dosw. do nastepnego poziomu   
 * do: wyswietlania w glownym oknie
 */
 public int getEXPNXT()
@@ -308,7 +339,6 @@ public abstract int slash();
 * do: walki
 */
 public abstract void hide(int n);
-
 /**
 * funkcja podajaca zycie
 * do: kopiowania przy walce, wyswietlania w glownym oknie

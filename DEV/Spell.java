@@ -18,4 +18,5 @@ public int cost(){
 	}
 public abstract String data();
 public abstract void use(Character z);
+public abstract void upgrade();
 }

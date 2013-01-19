@@ -35,6 +35,21 @@ public int dmg(){
 public void use(Character z){
 	int tmp = dmg();
 	z.hide(tmp);
-	z.drain(this.cost());
+	}
+public void upgrade(){
+	if(lvl == 0)
+		{
+		dmg_l = 48;
+		dmg_u = 52;
+		cost = 20;
+		lvl++;
+		}
+	else
+		{
+		dmg_l += 3;
+		dmg_u += 4;
+		cost += 5;
+		lvl++;
+		}	
 	}
 }

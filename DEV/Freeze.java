@@ -52,4 +52,24 @@ public void use(Character z){
 	z.hide(tmp);
 	z.spoilDEF(tmp2);
 	}
+public void upgrade(){
+	if(lvl == 0)
+		{
+		dmg_l = 27;
+		dmg_u = 40;
+		cost = 20;
+		def_low = 4;
+		chance = 60;
+		lvl++;
+		}
+	else
+		{
+		dmg_l += 3;
+		dmg_u += 4;
+		cost += 5;
+		def_low ++;
+		chance += 2;
+		lvl++;
+		}	
+	}
 }

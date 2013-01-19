@@ -6,7 +6,7 @@ public Mshield(int z){
 	if(z>0)
 		{
 		defence = 25 + (z-1);
-		cost = 10 + ((z-1)*2);
+		cost = 20 + ((z-1)*3);
 		}
 	lvl = z;
 	name = "Force shield";
@@ -32,6 +32,19 @@ public int protect(){
 public void use(Character z){
 	int tmp = protect();
 	z.spoilDEF(-tmp);
-	z.drain(this.cost());
+	}
+public void upgrade(){
+	if(lvl == 0)
+		{
+		defence = 25;
+		cost = 20;
+		lvl++;
+		}
+	else
+		{
+		defence ++;
+		cost += 3;
+		lvl++;
+		}	
 	}
 }

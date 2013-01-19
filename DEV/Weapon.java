@@ -53,7 +53,11 @@ public Weapon(int lev,int z,Name n){
 			spec = n.spec[rand];
 			atc_s = lev*z;
 			}
-			
+		if(z<3)
+			{
+			spec = "";
+			atc_s = 0;
+			}
 		
 		atc_l = lev*4 + (int)(Math.random()*((lev*4*z) - (lev*4) + 1));
 		atc_u = atc_l + (lev*z);
@@ -69,7 +73,7 @@ public int atc(){
 	}
 public String addition(){
 	int a = spec.length();
-	if(a > 1)
+	if(a > 2)
 		{
 		String res = "(+ " + atc_s + " " + spec + ")";
 		return res;

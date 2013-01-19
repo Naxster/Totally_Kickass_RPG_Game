@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.io.*;
+
 public class Book {
 
 private Spell[] spells;
@@ -21,7 +24,7 @@ public Book(int z){
         spells[1] = new Lightning(0);
         spells[2] = new Freeze(1);
         spells[3] = new Heal(2);
-        spells[4] = new Mshield(0);
+        spells[4] = new Mshield(1);
         spells[5] = new Meteor(0);
 		break;
 	case 0:
@@ -131,5 +134,17 @@ public void show(){
 		ex = z.data();
 		System.out.println(name+" "+lev+",\t (" + ex +") \t\t: "+formula);
 		}
-}
+	}
+public void update(){
+	Scanner sc = new Scanner(System.in);
+	int chos;
+	show();
+	System.out.println("Type number [0-5] of spell to upgrade: ");
+	do{
+	chos = sc.nextInt();
+	}while(chos>5 || chos<0);
+	Spell z = spells[chos];
+	z.upgrade();
+	System.out.println("Done");
+	}
 }

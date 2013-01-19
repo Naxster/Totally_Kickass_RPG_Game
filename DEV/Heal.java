@@ -5,7 +5,7 @@ private int heal;
 public Heal(int z){
 	if(z>0)
 		{
-		heal = 50 + ((z-1)*10);
+		heal = 150 + ((z-1)*10);
 		cost = 10 + ((z-1)*2);
 		}
 	lvl = z;
@@ -32,6 +32,19 @@ public int healing(){
 public void use(Character z){
 	int tmp = healing();
 	z.help(tmp);
-	z.drain(this.cost());
+	}
+public void upgrade(){
+	if(lvl == 0)
+		{
+		heal = 150;
+		cost = 10;
+		lvl++;
+		}
+	else
+		{
+		heal += 30;
+		cost += 2;
+		lvl++;
+		}	
 	}
 }

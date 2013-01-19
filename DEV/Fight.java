@@ -172,11 +172,11 @@ public boolean Mortal_Kombat(){
 	player.endFight();
 	return false;
 	}
-	
+/*	
 public static void main(String[] args) throws IOException{
 Name name = new Name();
 Fight turnament = new Fight(new Warrior(name), 2,3, name);
 boolean t = turnament.Mortal_Kombat();
-
 }
+*/
 }

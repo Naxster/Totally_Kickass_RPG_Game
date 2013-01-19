@@ -27,7 +27,7 @@ public Mage(Name names) throws IOException
 	ex_mana = 15;
 	dmg = 8*strenght;		
 	ex_dmg = 0;
-	mdmg = 3*magic_skill;		
+	mdmg = 7*magic_skill;		
 	ex_mdmg = 9;
 	def = 6*dexterity;	
 	ex_def = 0;
@@ -42,8 +42,8 @@ public Mage(Name names) throws IOException
 	this.names = names;
 	equip = new Equipment(this,1);
 
-	 x = 10;	
-	 y = 0;
+	 x = 14;	
+	 y = 1;
 	 exp_nxt = 500;		
 	}
 public int slash()
