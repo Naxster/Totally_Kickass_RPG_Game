@@ -43,7 +43,7 @@ public void slash(Player p)
 		int tmp = this.mdmg - p.getDEF();
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You get "+tmp+" damage \nDEFENCE LOWER & MANA DRAIN");
+		System.out.println("You get "+tmp+" damage <strong attack>\n\tDEFENCE LOWER & MANA DRAIN");
 		p.meta_hp -= tmp;
 		p.spoilDEF(this.dmg);
 		if(p.meta_mana-10 >=0)
@@ -57,7 +57,7 @@ public void slash(Player p)
 		int tmp = krytyk() - p.getDEF();
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You take "+tmp+" damage");
+		System.out.println("You take "+tmp+" damage <normal attac>");
 		p.meta_hp -= tmp;
 		}
 	}

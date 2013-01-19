@@ -42,7 +42,7 @@ public void slash(Player p)
 		int tmp = krytyk() - p.getDEF();
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You take "+tmp+" damage");
+		System.out.println("You take "+tmp+" damage <strong attack>");
 		p.meta_hp -= tmp;
 		this.mana -= 30;
 		}
@@ -51,7 +51,7 @@ public void slash(Player p)
 		int tmp = this.dmg - p.getDEF();
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You take "+tmp+" damage");
+		System.out.println("You take "+tmp+" damage <normal attack>");
 		p.meta_hp -= tmp;
 		}
 	}

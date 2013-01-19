@@ -53,62 +53,62 @@ public void cast(Character w, Character p, String n){
 		case "Khar neramas":
 			if(spells[0].level() > 0 && p.getMANA()>=costs[0])
 				{
-				System.out.println("Fireball casted");
+				System.out.println("<Fireball casted>");
 				spells[0].use(w);
 				p.drain(costs[0]);
 				}
 			else
-				System.out.println("Failed casting");
+				System.out.println("<Failed casting>");
 			break;
 		case "Ramare Kere":
 			if(spells[1].level() > 0 && p.getMANA()>=costs[1])
 				{
-				System.out.println("Lightning casted");
+				System.out.println("<Lightning casted>");
 				spells[1].use(w);
 				p.drain(costs[1]);
 				}
 			else
-				System.out.println("Failed casting");
+				System.out.println("<Failed casting>");
 			break;
 		case "Mov Ka Rem":
 			if(spells[2].level() > 0 && p.getMANA()>=costs[2])
 				{
-				System.out.println("Freeze casted");
+				System.out.println("<Freeze casted>");
 				spells[2].use(w);
 				p.drain(costs[2]);
 				}
 			else
-				System.out.println("Failed casting");
+				System.out.println("<Failed casting>");
 			break;
 		case "Harme":
 			if(spells[3].level() > 0 && p.getMANA()>=costs[3])
 				{
-				System.out.println("Heal casted");
+				System.out.println("<Heal casted>");
 				spells[3].use(p);
 				p.drain(costs[3]);
 				}
 			else
-				System.out.println("Failed casting");
+				System.out.println("<Failed casting>");
 			break;
 		case "Prevetio":
 			if(spells[4].level() > 0 && p.getMANA()>=costs[4])
 				{
-				System.out.println("Magic shield casted");
+				System.out.println("<Magic shield casted>");
 				spells[4].use(p);
 				p.drain(costs[4]);
 				}
 			else
-				System.out.println("Failed casting");
+				System.out.println("<Failed casting>");
 			break;
 		case "Krav naheris dran klamere":
 			if(spells[5].level() > 0 && p.getMANA()>=costs[5])
 				{
-				System.out.println("Meteor casted");
+				System.out.println("<Meteor casted>");
 				spells[5].use(w);
 				p.drain(costs[5]);
 				}
 			else
-				System.out.println("Failed casting");
+				System.out.println("<Failed casting>");
 			break;
 		default:
 			break;

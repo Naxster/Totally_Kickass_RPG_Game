@@ -13,6 +13,13 @@ public Fight(Player gracz, int num, int z, Name names) throws IOException{
 	
 	int lvl = player.getLVL();
 	int i;
+	if(z==0)
+		{
+		enemy.add(new Boss(lvl,names));
+		System.out.println("Wild and furious enemy flies from the heavens: Massive Red Dragon");
+		}
+	else
+	{
 	for(i=0;i<num;i++)
 		{
 		switch((int)(Math.random()*5)){
@@ -40,6 +47,7 @@ public Fight(Player gracz, int num, int z, Name names) throws IOException{
 			break;
 		}
 		}
+	}
 }
 public void MAttack(int e){
 	Monster mon = enemy.get(e);
@@ -137,7 +145,7 @@ public boolean Mortal_Kombat(){
 	
 	player.stFight();
 	do{
-	System.out.println("You have "+player.meta_hp+" health and "+player.meta_mana+" mana");
+	System.out.println("\nYou have "+player.meta_hp+" health and "+player.meta_mana+" mana");
 	for(i=0;i<enemy.size();i++)
 		System.out.println("Enemy "+i+" has "+enemy.get(i).getHP()+" health");
 	System.out.println("\nWill you: (a)ttack, (h)eal with potion or increase(m)ana with potion");
@@ -158,7 +166,8 @@ public boolean Mortal_Kombat(){
 		System.out.println("\n\n YOU HAVE WON");
 		player.endFight();
 		grabDaStuff();
-		player.addEXP(enemy.size()*100);
+		for(i=0;i<enemy.size();i++)
+			player.addEXP(enemy.get(i).getLVL() * 50);
 		return true;
 		}
 	

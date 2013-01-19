@@ -21,6 +21,7 @@ public void useHPOT(boolean t, int z)
 		{
 		this.h_pot-=1;
 		this.hp += 50;
+		System.out.println("<healing potion used>");
 		}
      else
      this.h_pot+=z;
@@ -104,7 +105,7 @@ public void slash(Player p)
 		int tmp = krytyk() - p.getDEF();
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You take "+tmp+" damage");
+		System.out.println("You take "+tmp+" damage <normal attack>");
 		p.meta_hp -= tmp;
 		}
 	else
@@ -112,7 +113,7 @@ public void slash(Player p)
 		int tmp = (int)(this.attack()*1.5 - p.getDEF());
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You take "+tmp+" damage");
+		System.out.println("You take "+tmp+" damage <strong attack>");
 		p.meta_hp -= tmp;
 		}
 	}

@@ -111,6 +111,12 @@ public int movement()throws IOException{
 			return 0;	
 		case 5:
 			return 0;
+		case 6:
+			Fight f = new Fight(play,1,0,names);
+			if(f.Mortal_Kombat() == true)
+				return 3;
+			else
+				return 2;
 		default:
 			return 0;
 		}
@@ -140,9 +146,12 @@ default:
 	break;
 }
 
+g.label();
+g.world.show(g.play.y*30 + g.play.x);
+
 while(true)
 	{
-	System.out.println("\n Type [wsad] for direction, [e]quipment or s[t]ats \n");
+	System.out.println("\033[1;33m\n  Type [wsad] for direction, [e]quipment or s[t]ats \n\033[0m");
 	chos = sc.nextLine();
 	switch(chos){
 	case "w":
@@ -153,7 +162,15 @@ while(true)
 			if(obstacle == 1)
 				g.play.y -= 1;
 			if(obstacle == 2)
-				return ;
+				{
+				System.out.println("\n\n\t YOU HAVE LOST... WE ARE ALL DOOMED...");
+				return;
+				}
+			if(obstacle == 3)
+				{
+				System.out.println("\n\n\t YOU HAVE WIN!... WE ARE ALL SAVED FROM DRAGON...");
+				return;
+				}
 			g.world.map[g.play.y*30 + g.play.x][0] = 1;
 			}
 		break;
@@ -165,7 +182,15 @@ while(true)
 			if(obstacle == 1)
 				g.play.y += 1;
 			if(obstacle == 2)
-				return ;
+				{
+				System.out.println("\n\n\t YOU HAVE LOST... WE ARE ALL DOOMED...");
+				return;
+				}
+			if(obstacle == 3)
+				{
+				System.out.println("\n\n\t YOU HAVE WIN!... WE ARE ALL SAVED FROM DRAGON...");
+				return;
+				}
 			g.world.map[g.play.y*30 + g.play.x][0] = 1;
 			}
 		break;	
@@ -177,7 +202,15 @@ while(true)
 			if(obstacle == 1)
 				g.play.x += 1;
 			if(obstacle == 2)
-				return ;
+				{
+				System.out.println("\n\n\t YOU HAVE LOST... WE ARE ALL DOOMED...");
+				return;
+				}
+			if(obstacle == 3)
+				{
+				System.out.println("\n\n\t YOU HAVE WIN!... WE ARE ALL SAVED FROM DRAGON...");
+				return;
+				}
 			g.world.map[g.play.y*30 + g.play.x][0] = 1;
 			}
 		break;
@@ -189,7 +222,15 @@ while(true)
 			if(obstacle == 1)
 				g.play.x -= 1;
 			if(obstacle == 2)
-				return ;
+				{
+				System.out.println("\n\n\t YOU HAVE LOST... WE ARE ALL DOOMED...");
+				return;
+				}
+			if(obstacle == 3)
+				{
+				System.out.println("\n\n\t YOU HAVE WIN!... WE ARE ALL SAVED FROM DRAGON...");
+				return;
+				}
 			g.world.map[g.play.y*30 + g.play.x][0] = 1;
 			}
 		break;

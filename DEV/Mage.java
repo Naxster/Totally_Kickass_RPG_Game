@@ -72,6 +72,4 @@ public void hide(int n)
 		this.meta_hp -= obr;
 	System.out.println("You take "+obr+" damage");
     }
-public void levelup(){
-	}
 }

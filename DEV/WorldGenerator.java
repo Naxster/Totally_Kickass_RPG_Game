@@ -46,12 +46,24 @@ case 0:
 case 1:
 	w = 'X';
 	break;
+case 3:
+	w = 'T';
+	break;
+case 6:
+	w = 'B';
+	break;
 default:
 	w = ' ';
 	break;
 }
 if(map[p][0] == 1)
 	w = 'O';
+if(map[p][1] == 4)
+	w = 'Q';
+if(map[p][1] == 5)
+	w = 'S';
+if(map[p][1] == 6)
+	w = 'B';
 if(p == c)
 	w = 'P';
 return w;

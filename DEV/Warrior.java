@@ -43,8 +43,8 @@ public Warrior(Name names) throws IOException
 	equip = new Equipment(this,0);
 
 
-	 x = 14;	
-	 y = 1;
+	 x = 27; //14	
+	 y = 32; //1
 	 exp_nxt = 500;		
 	}
 public int slash()
@@ -73,6 +73,4 @@ public void hide(int n)
 		this.meta_hp -= obr;
 	System.out.println("You take "+obr+" damage");
     }
-public void levelup(){
-	}
 }

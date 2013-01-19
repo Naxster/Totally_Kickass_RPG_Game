@@ -89,6 +89,7 @@ public void useHPOT(boolean t, int z)
 		{
 		this.h_pot-=1;
 		this.meta_hp += 150;
+		System.out.println("<healing potion used>");
 		}
      else
      this.h_pot+=z;
@@ -113,6 +114,7 @@ public void useMPOT(boolean t, int z)  //true to uzycie, false to dodanie
 		{
 		this.m_pot-=1;
 		this.meta_mana += 120;
+		System.out.println("<mana potion used>");
 		}
      else
      this.m_pot+=z;
@@ -260,17 +262,6 @@ public int getEXP()
 * do: zmiany wartosci po walce, obsluga inicjacji zmiany poziomu
 * @param z - warotsc zmiany
 */
-public void addEXP(int z)
-     {
-     this.exp += z;
-	 while(this.exp>=this.exp_nxt)
-		{
-		this.exp -= this.exp_nxt;
-		this.chgEXPNXT();
-		this.levelup();
-		this.lvl++;
-		}
-     }
 public void levelup(){
 	Scanner sc = new Scanner(System.in);
 	String chos;
@@ -300,6 +291,17 @@ public void levelup(){
 		System.out.println("Blad");
 	}
 	}
+public void addEXP(int z)
+     {
+     this.exp += z;
+	 while(this.exp>=this.exp_nxt)
+		{
+		this.exp -= this.exp_nxt;
+		this.chgEXPNXT();
+		levelup();
+		this.lvl++;
+		}
+     }
 /**	
 * funkcja podajaca dosw. do nastepnego poziomu   
 * do: wyswietlania w glownym oknie
@@ -389,6 +391,12 @@ public void identify(){
 	System.out.println("Add Defence: \t\t" + data);
 	data = ex_crit;
 	System.out.println("Add Chn for critical: \t" + data);
+	data = lvl;
+	System.out.println("\nLevel: \t" + data);
+	data = exp;
+	System.out.println("Experiance: \t" + data);
+	data = exp_nxt;
+	System.out.println("Experiance to next level: \t" + data);
 	}
 public Name getNames(){
 	return names;

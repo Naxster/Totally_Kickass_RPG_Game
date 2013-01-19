@@ -22,6 +22,7 @@ public void useMPOT(boolean t, int z)  //true to uzycie, false to dodanie
 		{
 		this.m_pot-=1;
 		this.mana += 90;
+		System.out.println("<mana potion used>");
 		}
      else
      this.m_pot+=z;
@@ -32,6 +33,7 @@ public void useHPOT(boolean t, int z)
 		{
 		this.h_pot-=1;
 		this.hp += 50;
+		System.out.println("<healing potion used>");
 		}
      else
      this.h_pot+=z;
@@ -128,7 +130,7 @@ public void slash(Player p)
 		int tmp = this.attack() - p.getDEF();
 		if(tmp<0)
 			tmp = 0;
-		System.out.println("You take "+tmp+" damage");
+		System.out.println("You take "+tmp+" damage <staff attack>");
 		p.meta_hp -= tmp;
 		}
 	}
