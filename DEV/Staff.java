@@ -51,7 +51,7 @@ public Staff(int lev,int z,Name n){
 		ex_def = ( (int)(Math.random()*2) ) * ( (int)(Math.random()*(z*6)) );
 		ex_crit = ( (int)(Math.random()*2) ) * ( (int)(Math.random()*(z*10)) );
 		
-		cost = (int)(z*100*(1/4 * lev));
+		cost = (int)(z*100 + z*100*(1/2 * lev));
 		require = 2 + lev + z;
 		}
 }

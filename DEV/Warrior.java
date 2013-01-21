@@ -43,8 +43,8 @@ public Warrior(Name names) throws IOException
 	equip = new Equipment(this,0);
 
 
-	 x = 27; //14	
-	 y = 32; //1
+	 x = 14; //14	
+	 y = 1; //1
 	 exp_nxt = 500;		
 	}
 public int slash()

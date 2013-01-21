@@ -45,7 +45,7 @@ public Shield(int lev,int z,Name n){
 		def_l = lev*2 + (int)(Math.random()*((lev*2*z) - (lev*2) + 1));
 		def_u = def_l + (lev*2);
 		
-		cost = (int)(z*100*(1/4 * lev));
+		cost = (int)(z*100 + z*100*(1/2 * lev));
 		require = 2 + lev + z;
 		}
 }

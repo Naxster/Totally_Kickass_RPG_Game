@@ -10,6 +10,7 @@ private Quest q3;
 public Name names;
 WorldGenerator world;
 Player play;
+Shop sklep;
 
 public Game() throws IOException{
 	q1 = null;
@@ -53,6 +54,7 @@ public void label(){
 	}
 public int movement()throws IOException{
 	int cord = play.y*30 + play.x;
+	Scanner sc = new Scanner(System.in);
 	switch(world.map[cord][1]){
 		case 0:
 			return 0;
@@ -110,6 +112,19 @@ public int movement()throws IOException{
 				}
 			return 0;	
 		case 5:
+			if(world.map[cord][0] == 0)
+				{
+				sklep = new Shop(play.getLVL(),names);
+				sklep.goShopin(play);
+				}
+			else
+				{
+				System.out.println("Do you want to reload show (y-n), to make it more adusted?");
+				String chos = sc.nextLine();
+				if(chos == "y")
+					sklep = new Shop(play.getLVL(),names);
+				sklep.goShopin(play);
+				}
 			return 0;
 		case 6:
 			Fight f = new Fight(play,1,0,names);
@@ -151,7 +166,7 @@ g.world.show(g.play.y*30 + g.play.x);
 
 while(true)
 	{
-	System.out.println("\033[1;33m\n  Type [wsad] for direction, [e]quipment or s[t]ats \n\033[0m");
+	System.out.println("\n Type [wsad] for direction, [e]quipment or s[t]ats \n");
 	chos = sc.nextLine();
 	switch(chos){
 	case "w":

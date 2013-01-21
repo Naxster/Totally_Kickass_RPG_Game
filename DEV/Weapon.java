@@ -62,7 +62,7 @@ public Weapon(int lev,int z,Name n){
 		atc_l = lev*4 + (int)(Math.random()*((lev*4*z) - (lev*4) + 1));
 		atc_u = atc_l + (lev*z);
 		
-		cost = (int)(z*100*(1/4 * lev));
+		cost = (int)(z*100 + z*100*(1/2 * lev));
 		require = 2 + lev + z;
 		}
 }
